@@ -28,3 +28,15 @@ Challenges & Solutions:
 Order Status Management: Implemented a status update feature in the admin interface, allowing for easy tracking and management of orders.
 Dynamic Pricing: Calculated the total order price dynamically using Django’s template features and custom logic.
 This project demonstrates a practical application of Django’s capabilities in building a full-featured e-commerce platform, showcasing skills in both backend development and frontend design.
+
+Screenshots:
+![Screenshot (80)](https://github.com/user-attachments/assets/fcc6c74e-ac19-4d9e-8b33-78f08358577c)
+![Screenshot (81)](https://github.com/user-attachments/assets/36e4b86e-73c6-4b50-9bf0-53630015ee01)
+![Screenshot (84)](https://github.com/user-attachments/assets/6b02bc36-d12d-4821-8b7e-0f29bd4385fc)
+![Screenshot (79)](https://github.com/user-attachments/assets/385680ab-f4ec-4a56-a31a-38f63104b17e)
+
+
+
+
+
+
