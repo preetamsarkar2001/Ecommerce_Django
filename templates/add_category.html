@@ -1,0 +1,26 @@
+{% extends "base.html"%}
+
+{% load static%}
+{% block content%}
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">Categories</div>
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Category Name</label>
+                                <input type="text" id="category" name="category" class="form-control" required>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">SUBMIT</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock%}
+   

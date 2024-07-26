@@ -1,0 +1,121 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Footer - eCommerce</title>
+    <!-- Link to your Bootstrap CSS file -->
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Optionally, add your custom CSS file -->
+    <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+    <!-- Include Font Awesome for icons (optional) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        footer {
+            background-color: #000000; /* Black background */
+            border-top: 1px solid #e0e0e0; /* Light border */
+            color: #ffffff; /* White text color */
+            font-size: 0.875rem; /* Smaller font size */
+            padding: 1rem 0; /* Reduced padding */
+        }
+
+        footer a {
+            color: #ffffff; /* White text color for links */
+            text-decoration: none; /* Remove underline from links */
+        }
+
+        footer a:hover {
+            color: #ffcc00; /* Highlight color for links on hover */
+            text-decoration: underline; /* Underline links on hover */
+        }
+
+        .footer-heading {
+            font-weight: bold;
+            margin-bottom: 0.5rem; /* Reduced margin */
+        }
+
+        .footer-form input {
+            border: none;
+            border-radius: 0; /* Remove border radius for a clean look */
+            margin-bottom: 0.25rem; /* Reduced margin */
+        }
+
+        .footer-form button {
+            border-radius: 0; /* Remove border radius */
+            padding: 0.5rem 1rem; /* Adjust button padding */
+        }
+
+        .social-icons i {
+            font-size: 1.25rem; /* Smaller icon size */
+            transition: color 0.3s; /* Smooth transition for color change */
+        }
+
+        .social-icons i:hover {
+            color: #ffcc00; /* Highlight color for social media icons on hover */
+        }
+
+        .text-center.p-3 {
+            font-size: 0.75rem; /* Smaller font size */
+            padding: 0.5rem 0; /* Reduced padding */
+        }
+    </style>
+</head>
+<body>
+
+<!-- Footer -->
+<footer class="text-center text-lg-start">
+    <div class="container p-4">
+        <div class="row">
+            <!-- Customer Service -->
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h5 class="footer-heading">Admin Service</h5>
+                <ul class="list-unstyled mb-0">
+                    <li><a href="#" class="text-light">Help & FAQs</a></li>
+                    <li><a href="#" class="text-light">Support</a></li>
+                    <li><a href="#" class="text-light">Contact Admin</a></li>
+                </ul>
+            </div>
+            <!-- Information -->
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h5 class="footer-heading">Information</h5>
+                <ul class="list-unstyled mb-0">
+                    <li><a href="#" class="text-light">About Admin</a></li>
+                    <li><a href="#" class="text-light">Privacy Policy</a></li>
+                    <li><a href="#" class="text-light">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <!-- Newsletter -->
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h5 class="footer-heading">Newsletter</h5>
+                <form action="#" class="footer-form">
+                    <div class="mb-3">
+                        <input type="email" class="form-control" placeholder="Your email address" aria-label="Your email address">
+                    </div>
+                    <button type="submit" class="btn btn-warning">Subscribe</button>
+                </form>
+            </div>
+            <!-- Social Media -->
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h5 class="footer-heading">Follow Us</h5>
+                <ul class="list-unstyled d-flex justify-content-center justify-content-lg-start social-icons">
+                    <li><a href="#" class="text-light me-2"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="#" class="text-light me-2"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#" class="text-light me-2"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#" class="text-light"><i class="fab fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="text-center p-3 bg-dark text-light">
+        &copy; 2024 eCommerce Admin. All rights reserved.
+    </div>
+</footer>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+</body>
+</html>

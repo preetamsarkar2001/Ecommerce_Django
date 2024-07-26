@@ -1,0 +1,88 @@
+<!-- checkout.html -->
+
+{% extends "base.html" %}
+{% block content %}
+<style>
+    .main {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        padding: 20px;
+    }
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    form div {
+        margin-bottom: 15px;
+    }
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea,
+    select {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    button {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
+
+<main class="main">
+    <div class="container">
+        <h2>Checkout</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" value="{{request.user}}" required>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" value="{{request.user.email}}" required>
+            </div>
+            <div>
+                <label for="phone">Phone Number:</label>
+                <input type="tel" name="phone" id="phone" required>
+            </div>
+            <div>
+                <label for="address">Address:</label>
+                <textarea name="address" id="address" required></textarea>
+            </div>
+            <div>
+                <label for="payment_method">Payment Method:</label>
+                <select name="payment_method" id="payment_method" required>
+                    <option value="COD">Cash on Delivery</option>
+                    <option value="UPI">UPI</option>
+                    <option value="PayPal">PayPal</option>
+                </select>
+            </div>
+            <button type="submit" >Place Order</button>
+        </form>
+    </div>
+</main>
+{% endblock %}

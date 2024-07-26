@@ -1,0 +1,29 @@
+{% load static %}
+
+<title>
+    {% block title %} {% endblock %}
+</title>
+{% if user.is_staff %}
+    {% include "admin_header.html" %}
+{% else %}
+    {% include "header.html" %}
+{% endif %}
+
+<div class="content-container">
+    {% block content %}
+    {% endblock %}
+</div>
+
+{% if user.is_staff %}
+    {% include "admin_footer.html" %}
+{% else %}
+    {% include "footer.html" %}
+{% endif %}
+{% comment %} {% include "footer.html" %} {% endcomment %}
+
+<style>
+    .content-container {
+        padding: 20px 0;
+        margin-bottom: 50px;
+    }
+</style>

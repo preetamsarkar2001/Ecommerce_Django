@@ -1,0 +1,107 @@
+<!-- payment_success.html -->
+{% extends "base.html" %}
+{% block content %}
+<style>
+    .main {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        padding: 20px;
+        text-align: center;
+    }
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    h2 {
+        margin-bottom: 20px;
+    }
+    .order-summary {
+        text-align: center;
+        margin: 0 auto;
+    }
+    .order-summary img {
+        max-width: 100px;
+        height: auto;
+        margin-right: 20px;
+    }
+    .order-summary th, .order-summary td {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        text-align: center;
+    }
+    .order-summary th {
+        background-color: #f8f8f8;
+    }
+    .order-summary .total {
+        font-weight: bold;
+    }
+    .order-summary .actions {
+        margin-top: 20px;
+        text-align: center;
+    }
+    .order-summary .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        margin: 5px;
+    }
+    .order-summary .btn:hover {
+        background-color: #45a049;
+    }
+</style>
+
+<main class="main">
+    <div class="container">
+        <h2>Payment Successful!</h2>
+        <p>Your order has been placed successfully.</p>
+
+        <div class="order-summary">
+            <h3>Order Summary</h3>
+            <table style="margin: 0 auto;">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in order_items %}
+                    <tr>
+                        <td><img src="{{ item.product.image.url }}" alt="{{ item.product.name }}"></td>
+                        <td>{{ item.product.name }}</td>
+                        <td>Rs {{ item.product.price }}</td>
+                        <td>{{ item.quantity }}</td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <td colspan="3" class="total">Total Amount</td>
+                        <td>Rs {{ order.total_amount }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="total">Payment Method</td>
+                        <td>{{ order.payment_method }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="actions">
+                <a href="{% url 'download_receipt' order.id %}" class="btn">Download Receipt</a>
+                <a href="{% url 'add_feedback' order.id %}" class="btn">Add Feedback</a>
+            </div>
+        </div>
+
+        <a href="{% url 'home' %}" class="home-button btn-btn-primary">Home</a>
+    </div>
+</main>
+{% endblock %}

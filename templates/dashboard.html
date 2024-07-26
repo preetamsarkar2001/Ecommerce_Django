@@ -1,0 +1,119 @@
+<!-- admin_dashboard.html -->
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<head>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <style>
+        .dashboard-card {
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+            color: #fff;
+            transition: background-color 0.3s ease;
+        }
+        .dashboard-card h2 {
+            margin: 10px 0;
+            font-size: 2rem;
+        }
+        .dashboard-card p {
+            margin: 5px 0;
+            font-size: 1.2rem;
+        }
+        .total-orders {
+            background-color: #007bff; /* Blue */
+        }
+        .total-users {
+            background-color: #28a745; /* Green */
+        }
+        .total-categories {
+            background-color: #ffc107; /* Yellow */
+        }
+        .total-products {
+            background-color: #17a2b8; /* Teal */
+        }
+        .total-sales {
+            background-color: #dc3545; /* Red */
+        }
+        .total-sliders {
+            background-color: #fd7e14;
+        }
+        .total-sliders:hover {
+            background-color: #e07b24; /* Darker Orange */
+        }
+        .dashboard-card:hover {
+            color: #000;
+        }
+        .total-orders:hover {
+            background-color: #0056b3; /* Darker Blue */
+        }
+        .total-users:hover {
+            background-color: #218838; /* Darker Green */
+        }
+        .total-categories:hover {
+            background-color: #e0a800; /* Darker Yellow */
+        }
+        .total-products:hover {
+            background-color: #138496; /* Darker Teal */
+        }
+        .total-sales:hover {
+            background-color: #c82333; /* Darker Red */
+        }
+        .view-analytics-button {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-3 col-md-6">
+            <div class="dashboard-card total-orders">
+                <h2>{{ total_orders }}</h2>
+                <p>Total Orders</p>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="dashboard-card total-users">
+                <h2>{{ total_users }}</h2>
+                <p>Total Users</p>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="dashboard-card total-categories">
+                <h2>{{ total_categories }}</h2>
+                <p>Total Categories</p>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="dashboard-card total-products" >
+                <h2>{{ total_products }}</h2>
+                <p>Total Products</p>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="dashboard-card total-sliders" >
+                <h2>{{ total_dynamic_sliders }}</h2>
+                <p>Total Dynamic Sliders</p>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="dashboard-card total-sales">
+                <h2>Rs {{ total_sales }}</h2>
+                <p>Total Sales</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="view-analytics-button">
+    <a href="{% url 'view_analytics' %}" class="btn btn-primary">View Analytics</a>
+</div>
+
+{% endblock %}

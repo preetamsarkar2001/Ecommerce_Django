@@ -1,0 +1,20 @@
+{% extends "base.html"%}
+
+{% block content %}
+<div class="container">
+    <h1>Categories</h1>
+    <div class="row">
+        {% for cat in categories %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">{{ cat.name }}</h5>
+                    
+                    <a href="{% url 'category_detail' category.id %}" class="btn btn-primary">View Products</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

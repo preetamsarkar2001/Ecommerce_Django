@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - eCommerce</title>
+    <!-- Link to Bootstrap CSS -->
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Optionally, add your custom CSS file -->
+    <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+    <!-- Include Font Awesome for icons (optional) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        .navbar-dark {
+            background-color: #000000; /* Black background */
+        }
+        .navbar-dark .navbar-brand,
+        .navbar-dark .navbar-nav .nav-link,
+        .navbar-dark .dropdown-item {
+            color: #ffffff !important; /* White font color */
+        }
+        .navbar-dark .navbar-toggler-icon {
+            background-color: #ffffff; /* White color for the toggler icon */
+        }
+        .navbar-dark .navbar-toggler {
+            border-color: #ffffff; /* White color for the toggler border */
+        }
+        .navbar-dark .dropdown-menu {
+            background-color: #000000; /* Black dropdown background */
+        }
+        .navbar-dark .dropdown-menu a {
+            color: #ffffff !important; /* White font color for dropdown items */
+        }
+        .navbar-dark .dropdown-menu a:hover {
+            background-color: #333333; /* Darker background color on hover */
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'dashboard'%}">
+                
+                Admin Dashboard
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'view_analytics' %}">Analytics</a>
+                    </li> <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'upload_slider' %}">Dynamic Slider</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Products
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="productsDropdown">
+                            <li><a class="dropdown-item" href="{% url 'add_product' %}">Add Product</a></li>
+                            <li><a class="dropdown-item" href="{% url 'list_product' %}">List Products</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Orders
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="productsDropdown">
+                            <li><a class="dropdown-item" href="{% url 'view_orders'%}">View Orders</a></li>
+                            <li><a class="dropdown-item" href="">Delete Orders</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Categories
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="categoriesDropdown">
+                            <li><a class="dropdown-item" href="{% url 'add_category' %}">Add Category</a></li>
+                            <li><a class="dropdown-item" href="{% url 'list_category' %}">List Categories</a></li>
+                        </ul>
+                    </li>
+                    
+                </ul>
+               
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">
+                            <i class="bi bi-person"></i> Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Content Section -->
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+        
+            <!-- Your content goes here -->
+            
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="{% static 'assets/js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

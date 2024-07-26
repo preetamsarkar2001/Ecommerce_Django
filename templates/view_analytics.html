@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<head>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- jQuery UI for date picker -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+    <style>
+        .chart-container {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        canvas {
+            width: 100% !important;
+            max-width: 600px;
+            height: auto !important;
+        }
+    </style>
+</head>
+
+<div class="container mt-5">
+    <h2>Analytics Dashboard</h2>
+    
+    <form method="get" class="form-inline mb-3">
+        <div class="form-group mr-2">
+            <label for="start_date" class="mr-2">Start Date:</label>
+            <input type="text" id="start_date" name="start_date" class="form-control" value="{{ start_date }}">
+        </div>
+        <div class="form-group mr-2">
+            <label for="end_date" class="mr-2">End Date:</label>
+            <input type="text" id="end_date" name="end_date" class="form-control" value="{{ end_date }}">
+        </div>
+        <button type="submit" class="btn btn-primary">Generate Charts</button>
+    </form>
+
+    {% comment %} <div class="chart-container">
+        <h3>Pie Chart: Total Users and Total Sales</h3>
+        <canvas id="pieChart"></canvas>
+    </div> {% endcomment %}
+
+    <div class="chart-container">
+        <h3>Line Chart: Categories, Products, Users, and Orders</h3>
+        <canvas id="lineChart"></canvas>
+    </div>
+    
+    <div class="chart-container">
+        <h3>Stacked Bar Chart: Orders, Users, Categories, Products</h3>
+        <canvas id="barChart"></canvas>
+    </div>
+</div>
+
+<script>
+    $(function() {
+        $("#start_date, #end_date").datepicker({ dateFormat: 'yy-mm-dd' });
+    });
+
+    // Data for Pie Chart
+    {% comment %} var pieData = {
+        labels: ['Total Users', 'Total Sales'],
+        datasets: [{
+            data: [{{ total_users }}, {{ total_sales }}],
+            backgroundColor: ['#007bff', '#dc3545'],
+            borderColor: ['#0056b3', '#c82333'],
+            borderWidth: 1
+        }]
+    }; {% endcomment %}
+
+    {% comment %} var ctxPie = document.getElementById('pieChart').getContext('2d');
+    new Chart(ctxPie, {
+        type: 'pie',
+        data: pieData,
+        options: {
+            responsive: true
+        }
+    }); {% endcomment %}
+
+    // Data for Line Chart
+    var lineData = {
+        labels: ['Categories', 'Products', 'Users', 'Orders'],
+        datasets: [{
+            label: 'Counts',
+            data: [{{ total_categories }}, {{ total_products }}, {{ total_users }}, {{ total_orders }}],
+            backgroundColor: 'rgba(0, 123, 255, 0.2)',
+            borderColor: '#007bff',
+            borderWidth: 2,
+            fill: false
+        }]
+    };
+
+    var ctxLine = document.getElementById('lineChart').getContext('2d');
+    new Chart(ctxLine, {
+        type: 'line',
+        data: lineData,
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // Data for Stacked Bar Chart
+    var barData = {
+        labels: ['Orders', 'Users', 'Categories', 'Products'],
+        datasets: [{
+            label: 'Counts',
+            data: [{{ total_orders }}, {{ total_users }}, {{ total_categories }}, {{ total_products }}],
+            backgroundColor: 'rgba(0, 123, 255, 0.5)',
+            borderColor: 'rgba(0, 123, 255, 1)',
+            borderWidth: 1
+        }]
+    };
+
+    var ctxBar = document.getElementById('barChart').getContext('2d');
+    new Chart(ctxBar, {
+        type: 'bar',
+        data: barData,
+        options: {
+            responsive: true,
+            scales: {
+                x: {
+                    stacked: true
+                },
+                y: {
+                    stacked: true,
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+{% endblock %}

@@ -1,0 +1,151 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eCommerce</title>
+    <!-- Link to your Bootstrap CSS file -->
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+
+    <!-- Internal CSS for Dropdown and Header Styling -->
+    <style>
+        .dropdown-menu {
+            display: none;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            margin-top: 0;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: #fff; /* White background */
+            border-bottom: 1px solid #e0e0e0; /* Light border */
+        }
+
+        .navbar {
+            color: #000; /* Black text color */
+        }
+
+        .navbar-nav .nav-link {
+            color: #000; /* Black text color for links */
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-nav .nav-link img {
+            width: 24px; /* Adjust the width of the icons */
+            height: 24px; /* Adjust the height of the icons */
+            margin-right: 5px; /* Space between icon and text */
+        }
+
+        .navbar-brand {
+            color: #000; /* Black text color for brand */
+            font-size: 24px; /* Increase font size */
+            font-weight: bold; /* Bold text */
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px; /* Space between logo and text */
+        }
+
+        .navbar-toggler-icon {
+            filter: invert(0); /* Change toggler icon color to black */
+        }
+
+        .search-bar {
+            width: 300px; /* Set the width for the search bar */
+        }
+
+        .navbar-nav.ms-auto {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-nav.ms-auto .nav-item {
+            margin-left: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home'%}">
+                <img src="{% static 'assets/icons/ecom_logo.png' %}" alt="Logo"> eCommerce
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    {% if request.user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="{% static 'assets/icons/profile.png' %}" alt="Cart Icon"> {{ request.user }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="{% url 'order_history' %}">My Orders</a>
+                            <a class="dropdown-item" href="{% url 'change_password' %}">Change Password</a>
+                        </div>
+                    </li>
+                    {% endif %}
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'cart_detail' %}">
+                            <img src="{% static 'assets/icons/cart_img.png' %}" alt="Cart Icon"> View Cart
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCategories" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="{% static 'assets/icons/category_icon.png' %}" alt="Categories Icon"> Categories
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownCategories">
+                            {% for category in categories %}
+                            <li><a class="dropdown-item" href="{% url 'category_detail' category.id %}">{{ category.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contact_us'%}">
+                            <img src="{% static 'assets/icons/contact_us.png' %}" alt="Contact Icon"> Contact Us
+                        </a>
+                    </li>
+                </ul>
+            
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        {% if user.is_authenticated %}
+                        <a class="nav-link" href="{% url 'logout' %}">
+                            <img src="{% static 'assets/icons/logout2.png' %}" alt="Logout Icon"> Logout
+                        </a>
+                        {% else %}
+                        <a class="nav-link" href="{% url 'login1' %}">
+                            <img src="{% static 'assets/icons/login.png' %}" alt="Login Icon"> Login
+                        </a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="{% static 'assets/js/jquery-2.1.0.min.js' %}"></script>
+<script src="{% static 'assets/js/popper.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+</body>
+</html>
